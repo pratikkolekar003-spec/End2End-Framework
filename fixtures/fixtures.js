@@ -21,7 +21,8 @@ exports.test = base.test.extend({
     const loginPage = new LoginPage(page);
     await loginPage.navigateToLogin();
     await loginPage.login(process.env.ADMIN_USERNAME, process.env.ADMIN_PASSWORD, true, true);
-    await page.waitForURL(/.*home.*/);
+    const homePage = new HomePage(page);
+    await base.expect(homePage.logoutButton).toBeVisible({ timeout: 15000 });
     await use(page);
   }
 });
