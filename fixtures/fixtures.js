@@ -20,8 +20,8 @@ exports.test = base.test.extend({
   authenticatedAdminPage: async ({ page }, use) => {
     const loginPage = new LoginPage(page);
     await loginPage.navigateToLogin();
-    const user = process.env.ADMIN_USERNAME || '';
-    const pass = process.env.ADMIN_PASSWORD || '';
+    const user = process.env.ADMIN_USERNAME || 'sagesyntaxacademy';
+    const pass = process.env.ADMIN_PASSWORD || 'BuildingExcellence@111';
     
     await loginPage.login(user, pass, true, true);
     const homePage = new HomePage(page);
