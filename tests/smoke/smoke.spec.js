@@ -4,7 +4,7 @@ test.describe('Smoke Suite', () => {
   test('Valid Login @smoke', async ({ page, loginPage, homePage }) => {
     await loginPage.navigateToLogin();
     await loginPage.login(process.env.ADMIN_USERNAME, process.env.ADMIN_PASSWORD, true, true);
-    await expect(homePage.logoutButton).toBeVisible({ timeout: 15000 });
+    await expect(homePage.basicElementsCard).toBeVisible({ timeout: 15000 });
     expect(await homePage.isLoginSuccessful()).toBeTruthy();
   });
 });

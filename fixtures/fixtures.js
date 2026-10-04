@@ -22,7 +22,7 @@ exports.test = base.test.extend({
     await loginPage.navigateToLogin();
     await loginPage.login(process.env.ADMIN_USERNAME, process.env.ADMIN_PASSWORD, true, true);
     const homePage = new HomePage(page);
-    await base.expect(homePage.logoutButton).toBeVisible({ timeout: 15000 });
+    await base.expect(homePage.basicElementsCard).toBeVisible({ timeout: 15000 });
     await use(page);
   }
 });

@@ -14,12 +14,15 @@ class HomePage extends BasePage {
   }
 
   async isLoginSuccessful() {
-    return await this.isElementVisible(this.successMessage);
+    return await this.isElementVisible(this.basicElementsCard);
   }
 
   async logout() {
-    await this.clickElement(this.logoutButton.first());
-    await this.page.waitForNavigation();
+    const mobileMenuBtn = this.page.getByRole('button', { name: '☰' });
+    if (await mobileMenuBtn.isVisible()) {
+      await this.clickElement(mobileMenuBtn);
+    }
+    await this.clickElement(this.logoutButton.filter({ state: 'visible' }).first());
   }
 
   async navigateToBasicElements() {

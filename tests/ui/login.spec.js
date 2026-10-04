@@ -15,13 +15,13 @@ test.describe('Login Functionality - Data Driven', () => {
         // Assert successful login by checking success message or URL
         await expect(homePage.successMessage).toBeVisible({ timeout: 15000 });
         
-        // Wait for logout button as indicator of successful login
-        await expect(homePage.logoutButton).toBeVisible();
+        // Wait for basic elements card as indicator of successful login
+        await expect(homePage.basicElementsCard).toBeVisible();
       } else {
         // Wait for potential error message or check if still on login page
         // Wait for a short time to ensure it doesn't navigate
         await loginPage.page.waitForTimeout(1000);
-        await expect(homePage.logoutButton).toBeHidden();
+        await expect(homePage.basicElementsCard).toBeHidden();
       }
     });
   }
