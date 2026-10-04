@@ -20,9 +20,21 @@ exports.test = base.test.extend({
   authenticatedAdminPage: async ({ page }, use) => {
     const loginPage = new LoginPage(page);
     await loginPage.navigateToLogin();
-    await loginPage.login(process.env.ADMIN_USERNAME, process.env.ADMIN_PASSWORD, true, true);
+    const user = process.env.ADMIN_USERNAME || '';
+    const pass = process.env.ADMIN_PASSWORD || '';
+    
+    await loginPage.login(user, pass, true, true);
     const homePage = new HomePage(page);
-    await base.expect(homePage.basicElementsCard).toBeVisible({ timeout: 15000 });
+    
+    try {
+      await base.expect(homePage.successMessage).toBeVisible({ timeout: 10000 });
+    } catch (e) {
+      if (await loginPage.signInButton.isVisible()) {
+        throw new Error(`Login failed in CI. Login form is still visible. Credentials check - User length: ${user.length}, Pass length: ${pass.length}`);
+      }
+      throw e;
+    }
+    
     await use(page);
   }
 });

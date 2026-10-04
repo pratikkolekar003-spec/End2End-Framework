@@ -33,9 +33,7 @@ class LoginPage extends BasePage {
       await this.termsCheckbox.check();
     }
 
-    // Adding a short delay and force click to handle WebKit flakiness on this specific app
-    await this.page.waitForTimeout(500);
-    await this.signInButton.click({ force: true });
+    await this.signInButton.click();
   }
 }
 

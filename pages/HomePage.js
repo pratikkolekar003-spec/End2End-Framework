@@ -14,7 +14,7 @@ class HomePage extends BasePage {
   }
 
   async isLoginSuccessful() {
-    return await this.isElementVisible(this.basicElementsCard);
+    return await this.isElementVisible(this.successMessage);
   }
 
   async logout() {
