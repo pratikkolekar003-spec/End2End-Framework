@@ -1,0 +1,18 @@
+[
+  {
+    "testCase": "Valid Admin Login",
+    "username": "sagesyntaxacademy",
+    "password": "BuildingExcellence@111",
+    "asAdmin": true,
+    "acceptTerms": true,
+    "expectedSuccess": true
+  },
+  {
+    "testCase": "Invalid Login",
+    "username": "invalid_user",
+    "password": "wrongpassword",
+    "asAdmin": true,
+    "acceptTerms": true,
+    "expectedSuccess": false
+  }
+]
